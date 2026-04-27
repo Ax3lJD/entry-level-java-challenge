@@ -20,6 +20,18 @@ public class EmployeeService {
 
     private final Map<UUID, Employee> employees = new ConcurrentHashMap<>();
 
+    @PostConstruct
+    void seedMockData() {
+        save(buildEmployee("Ada", "Lovelace", 145000, 36, "Principal Engineer",
+                "ada.lovelace@example.com", Instant.now().minus(1200, ChronoUnit.DAYS)));
+        save(buildEmployee("Grace", "Hopper", 165000, 41, "Engineering Manager",
+                "grace.hopper@example.com", Instant.now().minus(900, ChronoUnit.DAYS)));
+        save(buildEmployee("Alan", "Turing", 120000, 29, "Software Engineer",
+                "alan.turing@example.com", Instant.now().minus(450, ChronoUnit.DAYS)));
+        save(buildEmployee("Bruce", "Wayne", 1200000, 39, "CEO",
+                "i.am.not.batman@example.com", Instant.now().minus(500, ChronoUnit.DAYS)));
+    }
+
     public List<Employee> getAllEmployees() {
         return new ArrayList<>(employees.values());
     }
