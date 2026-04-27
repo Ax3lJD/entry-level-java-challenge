@@ -1,4 +1,5 @@
 package com.challenge.api.dto;
+
 import java.time.Instant;
 
 public record CreateEmployeeRequest(
